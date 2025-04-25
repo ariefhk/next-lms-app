@@ -123,7 +123,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/macbook/Documents/nextjs-prisma-fullstack-template/src/servers/db/generated-prisma",
+      "value": "/Users/macbook/Documents/next-lms-app/src/servers/db/generated-prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -137,12 +137,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/macbook/Documents/nextjs-prisma-fullstack-template/prisma/schema.prisma",
+    "sourceFilePath": "/Users/macbook/Documents/next-lms-app/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../../prisma",
   "clientVersion": "6.6.0",

@@ -1,7 +1,7 @@
-import TemplatePage from "@/views/pages/template-page"
+import TestPage from "@/views/pages/test-page"
 
 const Page = () => {
-  return <TemplatePage />
+  return <TestPage />
 }
 
 export default Page
