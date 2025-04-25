@@ -1,0 +1,42 @@
+{
+  "name": "nextjs-prisma-fullstack-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "npx prisma generate",
+    "dev": "cross-env NODE_ENV=development next dev",
+    "build": "npx prisma generate && cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start",
+    "db:studio": "npx prisma studio",
+    "db:push": "cross-env NODE_ENV=development npx prisma db push --force-reset && npx prisma db push",
+    "db:push:seed": "yarn db:push && pnpm db:seed",
+    "db:seed": "cross-env NODE_ENV=development tsx ./src/servers/db/seeders/index.ts",
+    "lint": "next lint",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@prisma/client": "6.6.0",
+    "cross-env": "^7.0.3",
+    "next": "15.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.15.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.25.1",
+    "eslint-config-next": "^15.3.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^6.6.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.19.3",
+    "typescript": "^5"
+  }
+}
