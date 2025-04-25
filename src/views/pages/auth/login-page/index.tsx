@@ -1,19 +1,29 @@
+"use client"
+
+import { loginAction } from "@/servers/actions/auth/login.action"
 import Button from "@/views/components/ui/button"
 import Input from "@/views/components/ui/input"
 import Link from "next/link"
-import React from "react"
+import React, { useActionState } from "react"
 
 const LoginPage = () => {
+  const [state, formAction, isPending] = useActionState(loginAction, null)
+
   return (
     <>
       <section>
         <h3>Login</h3>
         <p>Welcome back! </p>
       </section>
-      <form action="" className="space-y-2">
+      <form action={formAction} className="space-y-2">
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
-        <Button type="submit">Login</Button>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? "Logging in..." : "Login"}
+        </Button>
+        {state?.status === "success" ? (
+          <div className="text-green-500">{state.message}</div>
+        ) : null}
       </form>
       <section>
         <p>
