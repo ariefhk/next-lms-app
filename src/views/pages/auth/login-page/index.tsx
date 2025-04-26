@@ -16,13 +16,29 @@ const LoginPage = () => {
         <p>Welcome back! </p>
       </section>
       <form action={formAction} className="space-y-2">
-        <Input name="email" type="email" placeholder="Email" />
-        <Input name="password" type="password" placeholder="Password" />
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          defaultValue={state?.data?.email}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          defaultValue={state?.data?.password}
+        />
         <Button type="submit" disabled={isPending}>
           {isPending ? "Logging in..." : "Login"}
         </Button>
+        {state?.errorFields?.email ? (
+          <div className="msg msg-error">{state.errorFields.email}</div>
+        ) : null}
+        {state?.errorFields?.password ? (
+          <div className="msg msg-error">{state.errorFields.password}</div>
+        ) : null}
         {state?.status === "success" ? (
-          <div className="text-green-500">{state.message}</div>
+          <div className="msg msg-success">{state.message}</div>
         ) : null}
       </form>
       <section>
