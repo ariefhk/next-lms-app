@@ -10,17 +10,17 @@ export const verifyUserAction = async (verifyUser: VerifyUser) => {
     if (!verify) {
       return {
         status: "error",
-        message: "user or code invalid",
+        message: "Invalid user or code!",
       }
     }
     return {
       status: "success",
-      message: "user verified, please login",
+      message: "User verified, Please login!",
     }
   } catch (error) {
     return {
       status: "error",
-      message: "user or code invalid",
+      message: "Invalid user or code!",
       errors: error,
     }
   }

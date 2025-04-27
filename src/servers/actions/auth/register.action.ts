@@ -3,6 +3,7 @@
 import { MailService } from "@/servers/services/mail.service"
 import { UserService } from "@/servers/services/user.service"
 import { VerificationCodeService } from "@/servers/services/verification-code.service"
+import { actionOutput } from "@/servers/utils/action"
 import { generateVerificationCode } from "@/servers/utils/generate-code"
 import bcrypt from "bcryptjs"
 import { z } from "zod"
@@ -30,17 +31,17 @@ export const registerAction = async (
   })
 
   if (!validatedFields.success) {
-    return {
+    return actionOutput({
       status: "error",
-      message: "Invalid fields",
-      errorFields: validatedFields.error.flatten().fieldErrors,
-      errors: null,
+      message: "Invalid form fields!",
+      errors: {
+        errorFields: validatedFields.error.flatten().fieldErrors,
+      },
       data: {
-        name,
         email,
         password,
       },
-    }
+    })
   }
 
   try {
@@ -50,6 +51,8 @@ export const registerAction = async (
       name,
       email,
       password: passwordHash,
+      isVerified: false,
+      avatarUrl: "",
     })
 
     const createdVerificationCode = await VerificationCodeService.create({
@@ -62,22 +65,22 @@ export const registerAction = async (
       code: createdVerificationCode.code,
     })
 
-    return {
+    return actionOutput({
       status: "success",
-      message: "Register successful!",
+      message: "Register successful, Please check your email!",
       data: null,
-    }
+      errors: null,
+    })
   } catch (error) {
-    return {
+    return actionOutput({
       status: "error",
-      message: "Register failed!",
-      errorFields: null,
-      errors: error,
+      message: "Register failed, Please try again!",
+      errors: error instanceof Error ? { message: error.message } : {},
       data: {
         name,
         email,
         password,
       },
-    }
+    })
   }
 }

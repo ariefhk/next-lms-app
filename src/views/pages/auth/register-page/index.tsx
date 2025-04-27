@@ -38,17 +38,22 @@ const RegisterPage = () => {
           {isPending ? "Registering..." : "Register"}
         </Button>
 
-        {state?.errorFields?.name ? (
-          <div className="msg msg-error">{state.errorFields.name}</div>
+        {state?.errors?.errorFields?.name ? (
+          <div className="msg msg-error">{state.errors.errorFields.name}</div>
         ) : null}
-        {state?.errorFields?.email ? (
-          <div className="msg msg-error">{state.errorFields.email}</div>
+        {state?.errors?.errorFields?.email ? (
+          <div className="msg msg-error">{state.errors.errorFields.email}</div>
         ) : null}
-        {state?.errorFields?.password ? (
-          <div className="msg msg-error">{state.errorFields.password}</div>
+        {state?.errors?.errorFields?.password ? (
+          <div className="msg msg-error">
+            {state.errors.errorFields.password}
+          </div>
         ) : null}
         {state?.status === "success" ? (
           <div className="msg msg-success">{state.message}</div>
+        ) : null}
+        {state?.status === "error" ? (
+          <div className="msg msg-error">{state.message}</div>
         ) : null}
       </form>
       <section>

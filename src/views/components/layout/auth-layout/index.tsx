@@ -7,7 +7,7 @@ export interface AuthLayoutProps {
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <main className="flex h-screen items-center justify-center">
-      <div className="w-[280px] space-y-6">{children}</div>
+      <div className="w-[300px] space-y-6">{children}</div>
     </main>
   )
 }
