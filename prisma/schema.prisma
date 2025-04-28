@@ -46,3 +46,46 @@ model VerificationCode {
 
   @@map("verification_codes")
 }
+
+model Course {
+  id             String          @id @default(uuid())
+  title          String
+  slug           String
+  description    String
+  price          Int
+  coverImage     String
+  isPublished    Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  courseSections CourseSection[]
+
+  @@map("courses")
+}
+
+model CourseSection {
+  id                   String                @id @default(uuid())
+  courseId             String
+  course               Course                @relation(fields: [courseId], references: [id])
+  title                String
+  order                Int                   @default(0)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  courseSectionLessons CourseSectionLesson[]
+
+  @@map("course_sections")
+}
+
+model CourseSectionLesson {
+  id              String        @id @default(uuid())
+  courseSectionId String
+  courseSection   CourseSection @relation(fields: [courseSectionId], references: [id])
+  title           String
+  slug            String
+  videoUrl        String
+  order           Int           @default(0)
+  isPreview       Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("course_section_lessons")
+}

@@ -138,6 +138,39 @@ exports.Prisma.VerificationCodeScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CourseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  price: 'price',
+  coverImage: 'coverImage',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CourseSectionScalarFieldEnum = {
+  id: 'id',
+  courseId: 'courseId',
+  title: 'title',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CourseSectionLessonScalarFieldEnum = {
+  id: 'id',
+  courseSectionId: 'courseSectionId',
+  title: 'title',
+  slug: 'slug',
+  videoUrl: 'videoUrl',
+  order: 'order',
+  isPreview: 'isPreview',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -159,7 +192,10 @@ exports.Role = exports.$Enums.Role = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  VerificationCode: 'VerificationCode'
+  VerificationCode: 'VerificationCode',
+  Course: 'Course',
+  CourseSection: 'CourseSection',
+  CourseSectionLesson: 'CourseSectionLesson'
 };
 
 /**

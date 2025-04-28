@@ -96,5 +96,5 @@ export const loginAction = async (prevState: unknown, formData: FormData) => {
     path: "/",
   })
 
-  redirect("/my-courses")
+  redirect("/dashboard/my-courses")
 }

@@ -94,7 +94,7 @@ export async function GET(request: Request) {
       path: "/",
     })
 
-    return redirect("/my-courses")
+    return redirect("/dashboard/my-courses")
   }
 
   await VerificationCodeService.create({
@@ -118,5 +118,5 @@ export async function GET(request: Request) {
     path: "/",
   })
 
-  return redirect("/my-courses")
+  return redirect("/dashboard/my-courses")
 }

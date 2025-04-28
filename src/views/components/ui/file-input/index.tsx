@@ -7,7 +7,7 @@ const style = tv({
   slots: {
     base: "flex w-full items-center  gap-2  overflow-hidden rounded-lg border border-slate-200 bg-white font-medium placeholder:font-normal focus:border-indigo-500",
     button:
-      "border-r bg-slate-50 px-3 py-2 font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-700 active:bg-slate-50 active:text-slate-800",
+      "border-r border-slate-200 bg-slate-50 px-3 py-2 font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-700 active:bg-slate-50 active:text-slate-800",
   },
 })
 
@@ -33,6 +33,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         Choose file
       </button>
       <input
+        {...props}
         ref={inputRef}
         type="file"
         hidden
