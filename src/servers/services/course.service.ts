@@ -33,4 +33,27 @@ export const CourseService = {
     })
     return courses
   },
+
+  async getDetails(idOrSlug: string) {
+    const course = await prisma.course.findFirst({
+      where: {
+        OR: [{ id: idOrSlug }, { slug: idOrSlug }],
+      },
+      include: {
+        courseSections: {
+          orderBy: {
+            order: "asc",
+          },
+          include: {
+            courseSectionLessons: {
+              orderBy: {
+                order: "asc",
+              },
+            },
+          },
+        },
+      },
+    })
+    return course
+  },
 }

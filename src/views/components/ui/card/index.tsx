@@ -3,7 +3,7 @@ import React from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 
 const style = tv({
-  base: "space-y-2 rounded-lg border border-slate-200 bg-white p-8 font-semibold shadow-sm shadow-slate-100",
+  base: "rounded-lg border border-slate-200 bg-white p-8 font-semibold shadow-sm shadow-slate-100",
 })
 
 type TCard = VariantProps<typeof style>

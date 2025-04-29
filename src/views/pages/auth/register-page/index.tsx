@@ -3,6 +3,7 @@
 import { registerAction } from "@/servers/actions/auth/register.action"
 import Button from "@/views/components/ui/button"
 import Input from "@/views/components/ui/input"
+import Message from "@/views/components/ui/message"
 import Link from "next/link"
 import React, { useActionState } from "react"
 
@@ -37,24 +38,11 @@ const RegisterPage = () => {
         <Button type="submit" disabled={isPending}>
           {isPending ? "Registering..." : "Register"}
         </Button>
-
-        {state?.errors?.errorFields?.name ? (
-          <div className="msg msg-error">{state.errors.errorFields.name}</div>
-        ) : null}
-        {state?.errors?.errorFields?.email ? (
-          <div className="msg msg-error">{state.errors.errorFields.email}</div>
-        ) : null}
-        {state?.errors?.errorFields?.password ? (
-          <div className="msg msg-error">
-            {state.errors.errorFields.password}
-          </div>
-        ) : null}
-        {state?.status === "success" ? (
-          <div className="msg msg-success">{state.message}</div>
-        ) : null}
-        {state?.status === "error" ? (
-          <div className="msg msg-error">{state.message}</div>
-        ) : null}
+        <Message type="error" message={state?.errors?.errorFields?.name} />
+        <Message type="error" message={state?.errors?.errorFields?.email} />
+        <Message type="error" message={state?.errors?.errorFields?.password} />
+        <Message type="error" message={state?.message} />
+        <Message type="success" message={state?.message} />
       </form>
       <section>
         <p>
